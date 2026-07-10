@@ -1,0 +1,22 @@
+[project]
+name = "sendwave"
+version = "0.1.0"
+description = "sendwave app"
+readme = "README.md"
+authors = [
+    { name = "Theophilus", email = "tsiameh@hardtanh.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.5.1",
+    "openai-agents>=0.18.1",
+    "pandas>=3.0.3",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+sendwave = "sendwave:main"
+
+[build-system]
+requires = ["uv_build>=0.11.28,<0.12.0"]
+build-backend = "uv_build"
