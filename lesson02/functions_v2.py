@@ -1,6 +1,6 @@
 # from utils import add, subtract, multiply, divide
 # from utils import add
-from utils import *
+from arith import *
 
 
 addition = add(10., 5.)
