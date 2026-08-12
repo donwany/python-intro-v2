@@ -61,3 +61,26 @@ person2.introduce()
  - each object has its functions
  -  attributes: BankAccount (name, account_number, balance, routing_number, ...)
  -  functions of a BankAccount (saving, payment, deposit, withdraw, check_balance, ...)
+
+## Inheritance: homework
+```python
+class AIModel:
+
+    def load_model(self):
+        print("Loading model")
+
+    def predict(self, data):
+        print(f"Making prediction on: {data}")
+
+class LLM(AIModel):
+
+    def generate(self, prompt):
+        print(f"Generating response for: {prompt}")
+
+llm = LLM()
+
+llm.load_model()
+llm.predict("Customer data")
+llm.generate("Explain inheritance")
+
+```
