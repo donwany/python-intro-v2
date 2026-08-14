@@ -84,3 +84,50 @@ llm.predict("Customer data")
 llm.generate("Explain inheritance")
 
 ```
+
+## Using @property homework
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 9 / 5) + 32
+
+temperature = Temperature(25)
+print(temperature.fahrenheit) # automatically calls temperature.fahrenheit()
+
+class Employee:
+    def __init__(self, monthly_salary):
+        self.monthly_salary = monthly_salary
+    @property
+    def annual_salary(self):
+        return self.monthly_salary * 12
+
+employee = Employee(5000)
+print(employee.annual_salary)
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    @property
+    def diameter(self):
+        return self.radius * 2
+
+circle = Circle(radius=5)
+circle.radius = 50
+print(circle.diameter)
+
+class Employee:
+    def __init__(self, hourly_rate, hours_worked):
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+    @property
+    def weekly_pay(self):
+        return self.hourly_rate * self.hours_worked
+
+employee = Employee(30, 40)
+print(employee.weekly_pay)
+employee.hours_worked = 45
+print(employee.weekly_pay)
+```
