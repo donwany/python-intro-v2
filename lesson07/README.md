@@ -131,3 +131,31 @@ print(employee.weekly_pay)
 employee.hours_worked = 45
 print(employee.weekly_pay)
 ```
+
+## Homework on all 3 methods (instance method, class method, static method)
+```python
+class Employee:
+    company = "Google"
+
+    def __init__(self, name):
+        self.name = name
+
+    # Instance method
+    def introduce(self):
+        return f"I am {self.name}"
+
+    # Class method
+    @classmethod
+    def get_company(cls):
+        return cls.company
+
+    # Static method
+    @staticmethod
+    def is_valid_email(email):
+        return "@" in email
+
+employee = Employee("John")
+print(employee.introduce())
+print(Employee.get_company())
+print(Employee.is_valid_email("john@example.com"))
+```
