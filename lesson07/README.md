@@ -159,3 +159,80 @@ print(employee.introduce())
 print(Employee.get_company())
 print(Employee.is_valid_email("john@example.com"))
 ```
+
+### Implement Polymorphism
+```python
+pip install openai anthropic google-genai
+
+export OPENAI_API_KEY="your-openai-key"
+export ANTHROPIC_API_KEY="your-anthropic-key"
+export GEMINI_API_KEY="your-gemini-key"
+
+import os
+
+from openai import OpenAI
+import anthropic
+from google import genai
+
+class GPT:
+    def __init__(self):
+        self.client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+    def generate(self, prompt):
+        response = self.client.responses.create(
+            model="gpt-5.6",
+            input=prompt
+        )
+
+        return response.output_text
+
+
+class Claude:
+    def __init__(self):
+        self.client = anthropic.Anthropic(
+            api_key=os.environ["ANTHROPIC_API_KEY"]
+        )
+
+    def generate(self, prompt):
+        response = self.client.messages.create(
+            model="claude-opus-5",
+            max_tokens=500,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
+
+        return response.content[0].text
+
+
+class Gemini:
+    def __init__(self):
+        self.client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+    def generate(self, prompt):
+        response = self.client.models.generate_content(
+            model="gemini-3.7-flash",
+            contents=prompt
+        )
+        return response.text
+
+models = [GPT(), Claude(), Gemini()]
+
+prompt = "Explain polymorphism in Python in one sentence."
+
+for model in models:
+    response = model.generate(prompt)
+    print(response)
+```
+
+### HuggingFace __call__
+```python
+from transformers import pipeline
+
+classifier = pipeline("sentiment-analysis")
+
+classifier("I love Python!")
+```
