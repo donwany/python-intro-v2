@@ -1,0 +1,27 @@
+SSH into my server credentials:
+--------------------------------
+ssh drun@76.184.108.157 -p 22
+Pwd:
+
+
+Upload files to server:
+———————————-------------
+scp -P 22 script.py drun@76.184.108.157:/home/drun/Desktop/train_model
+
+Download files from server:
+———————————————---------------
+scp -P 22 drun@76.184.108.157:/home/drun/Desktop/train_model/script.py .
+
+Change directory:
+------------------
+cd Desktop/
+
+Create and Activate virtual environment:
+----------------------------------------
+uv init
+uv venv
+source .venv/bin/activate
+
+Run:
+--------
+uv run script.py
