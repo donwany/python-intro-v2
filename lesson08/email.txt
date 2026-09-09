@@ -1,0 +1,93 @@
+export MJ_APIKEY_PUBLIC="6a187226df03b874ff7f302446002595"
+export MJ_APIKEY_PRIVATE="f460184afc4c7905fa07771d25782330"
+export SENDER_EMAIL="theodondre@gmail.com.com"
+export RECIPIENT_EMAIL="user.aerogramme@gmail.com"
+
+curl -s \
+  -X POST \
+  --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \
+  "https://api.mailjet.com/v3.1/send" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "Messages": [
+      {
+        "From": {
+          "Email": "'"$SENDER_EMAIL"'",
+          "Name": "Me"
+        },
+        "To": [
+          {
+            "Email": "'"$RECIPIENT_EMAIL"'",
+            "Name": "You"
+          }
+        ],
+        "Subject": "My first Mailjet Email!",
+        "TextPart": "Greetings from Mailjet!",
+        "HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
+      }
+    ]
+  }'
+
+
+from mailjet_rest import Client
+import os
+
+api_key = os.environ["MJ_APIKEY_PUBLIC"]
+api_secret = os.environ["MJ_APIKEY_PRIVATE"]
+
+sender_email = os.environ["SENDER_EMAIL"]
+recipient_email = os.environ["RECIPIENT_EMAIL"]
+
+mailjet = Client(
+    auth=(api_key, api_secret),
+    version="v3.1"
+)
+
+data = {
+    "Messages": [
+        {
+            "From": {
+                "Email": sender_email,
+                "Name": "Me"
+            },
+            "To": [
+                {
+                    "Email": recipient_email,
+                    "Name": "You"
+                }
+            ],
+            "Subject": "My first Mailjet Email!",
+            "TextPart": "Greetings from Mailjet!",
+            "HTMLPart": (
+                '<h3>Dear passenger 1, welcome to '
+                '<a href="https://www.mailjet.com/">Mailjet</a>!'
+                "</h3><br />"
+                "May the delivery force be with you!"
+            )
+        }
+    ]
+}
+
+result = mailjet.send.create(data=data)
+
+print(result.status_code)
+print(result.json())
+
+
+# retrieve sent Messages
+curl -s \
+	-X GET \
+	--user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \
+	https://api.mailjet.com/v3/REST/message/$MESSAGE_ID
+
+
+from mailjet_rest import Client
+import os
+
+api_key = os.environ['MJ_APIKEY_PUBLIC']
+api_secret = os.environ['MJ_APIKEY_PRIVATE']
+mailjet = Client(auth=(api_key, api_secret))
+id = '$MESSAGE_ID'
+result = mailjet.message.get(id=id)
+print(result.status_code)
+print(result.json())

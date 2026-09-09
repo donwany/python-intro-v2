@@ -5,8 +5,8 @@
 - Curl
 
 ### Nasa
-- API_KEY=
-- NewsAPI_KEY=
+- API_KEY=GTRMifLGpT9XO40MMtAgoTNOsJtTMK5hCn7qc9qE
+- NewsAPI_KEY=8ac619292f72417391cc9ec1207c7a05
 
 ```bash
 Your base url is: https://api.mailjet.com
