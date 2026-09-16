@@ -33,3 +33,30 @@ uv run app_v2.py --name Trump --age 120
 # giving our own special name
 wontumi --name Trump --age 120
 ```
+
+```bash
+python app_v3.py --help
+
+python app_v3.py info customers.csv
+python app_v3.py head customers.csv
+python app_v3.py head customers.csv --rows 20
+python app_v3.py search customers.csv --column name --value Alice
+
+python app_v3.py info --help
+python app_v3.py head --help
+python app_v3.py search --help
+```
+
+## Weather CLI
+```
+weather-cli/
+│
+├── pyproject.toml
+├── README.md
+├── src/
+│   └── weather_cli/
+│       ├── __init__.py
+│       └── cli.py
+│
+└── tests/
+```
