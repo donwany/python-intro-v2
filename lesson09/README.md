@@ -34,6 +34,21 @@ uv run app_v2.py --name Trump --age 120
 wontumi --name Trump --age 120
 ```
 
+### Fare Estimator
+```bash
+uv run app_v3.py --base 3.5 --distance 120 --rate 0.09
+uv run app_v3.py --base=3.5 --distance=120 --rate=0.09
+
+uv run app_v3.py -b 3.5 -d 120 -r 0.09
+uv run app_v3.py -b=3.5 -d=120 -r=0.09
+
+uv run app_v3.py --rate=0.09
+
+fare-calculator --base=3.5 --distance=120 --rate=0.09
+uber-fare --base=3.5 --distance=120 --rate=0.09
+```
+
+
 ```bash
 python app_v3.py --help
 
