@@ -1,0 +1,19 @@
+[project]
+name = "fare-client"
+version = "0.3.0"
+description = "Fare Estimator Application"
+readme = "README.md"
+authors = [
+    { name = "hardtanh", email = "fcdjin@hardtanh.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "twine>=7.0.0",
+]
+
+[project.scripts]
+uber-rate = "fare_client.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
