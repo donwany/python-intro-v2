@@ -1,0 +1,5 @@
+,Name,Math,Science,average_score,Passed,Status
+0,John,80,85,82.5,True,Passed
+1,Mary,95,90,92.5,True,Passed
+2,David,70,75,72.5,False,Failed
+3,Sarah,88,92,90.0,True,Passed
